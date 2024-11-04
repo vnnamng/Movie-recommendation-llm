@@ -1,12 +1,14 @@
 import streamlit as st
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 # tag::llm[]
 # Create the LLM
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(
-    openai_api_key=st.secrets["OPENAI_API_KEY"],
-    model=st.secrets["OPENAI_MODEL"],
+    openai_api_key=os.getenv("OPENAI_API_KEY"),
+    model=os.getenv("OPENAI_MODEL"),
 )
 # end::llm[]
 
@@ -15,6 +17,6 @@ llm = ChatOpenAI(
 from langchain_openai import OpenAIEmbeddings
 
 embeddings = OpenAIEmbeddings(
-    openai_api_key=st.secrets["OPENAI_API_KEY"]
+    openai_api_key=os.getenv("OPENAI_API_KEY"),
 )
 # end::embedding[]
